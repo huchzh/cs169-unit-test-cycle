@@ -23,3 +23,10 @@ Then /I should see all the movies/ do
     step %{I should see "#{movie.title}"}
   end
 end
+
+###############
+Then(/^the director of "([^"]*)" should be "([^"]*)"$/) do |arg1, arg2|
+#   movie_id = Movie.where()
+  expect(Movie.where(:title=>arg1).first.director).to eq(arg2)
+end
+###############
