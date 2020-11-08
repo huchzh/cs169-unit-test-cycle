@@ -22,12 +22,13 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
     ##################
-    when /^the edit page for "(.*)"$/ then edit_movie_path(Movie.where(:title=>$1).first.id)
-      #"/movies/#{$1}/edit"
-    when /^the details page for "(.*)"$/ then movie_path(Movie.where(:title=>$1).first.id)
       
-    # the Similar Movies page for "Star Wars"
-    when /^the Similar Movies page for "(.*)"$/ then 
+    when /^the edit page for "(.*)"$/ then edit_movie_path(Movie.where(:title=>$1).first.id)
+
+    when /^the details page for "(.*)"$/ then movie_path(Movie.where(:title=>$1).first.id)
+
+    when /^the Similar Movies page for "(.*)"$/ then similar_path(Movie.where(:title=>$1).first.id)
+      
     ##################
     else
       begin

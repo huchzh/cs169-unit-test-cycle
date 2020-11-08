@@ -25,10 +25,15 @@ class MoviesController < ApplicationController
   end
   
   ################
-#   def director
-#     @movie = Movie.find params[:id]
-#     @movie.director = params[:director]
-#   end
+  
+  def similar
+    @movies = with_director(Movie.where(:id => params[:id]).first.director)
+    if Movie.where(:id => params[:id]).first.director.blank?
+      flash[:notice] = "'#{Movie.where(:id => params[:id]).first.title}' has no director info."
+      redirect_to movies_path
+    end
+  end
+  
   ################
 
   def update
@@ -51,4 +56,12 @@ class MoviesController < ApplicationController
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date, :director)
   end
+  
+  ################
+  
+  def with_director(director)
+    return Movie.where(:director => director)
+  end
+  
+  ################
 end
