@@ -45,22 +45,11 @@ RSpec.describe MoviesController, type: :controller do
       post :create, :movie => {:title => 'Chicken Run', :rating => 'G', :description => "something", :release_date => '21-Jun-2000', :director => 'Nick Park'}
       expect(response).not_to eq(nil)
     end
+#     it "should go to similar movies page" do
+      
+#       get :similar, :id => 1
+#       expect(response).to render_template("movies")
+#     end
   end
   
-  
-#   describe "Find Similar route," do
-#     context "if the movie has a director," do
-
-#       it "assigns @movies" do
-#         @movies = Movie.create(:title => 'Chicken Run', :rating => 'G', :release_date => '21-Jun-2000', :director => 'Nick Park')
-#         get :index
-#         expect(assigns(:movies)).to eq([@movie])
-#       end
-      
-#       it "should go to similar movies page" do
-#         get :similar, id: @movie.id
-#         expect(response).to render_template("similar")
-#       end
-#     end
-#   end
 end
